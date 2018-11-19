@@ -1,0 +1,32 @@
+{
+  "name": "fbinstant-deploy",
+  "version": "0.0.2",
+  "description": "Deployer for Facebook Instant Games",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "facebook",
+    "deploy",
+    "instant",
+    "games",
+    "graph",
+    "api"
+  ],
+  "author": "Jonatan Santos",
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.88.0",
+    "zip-folder": "^1.0.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seobits/fbinstant-deploy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/seobits/fbinstant-deploy/issues"
+  },
+  "homepage": "https://github.com/seobits/fbinstant-deploy#readme"
+}
