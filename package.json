@@ -1,6 +1,6 @@
 {
   "name": "fbinstant-deploy",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Deployer for Facebook Instant Games",
   "main": "main.js",
   "scripts": {
