@@ -1,23 +1,23 @@
-# Deployer for facebook instant games.
+# Deployer for facebook instant games
 
  An npm package to help automate the deployment of facebook instant games.
  
- The deploy() function return a promise that will resolve if the package has been delivered to the facebook endpoint.
+ The deploy() function returns a promise that will resolve if the package has been delivered to the facebook endpoint.
 
-#instalation
+#installation
 
 <code>npm install --save-dev fbinstant-deploy</code>
 
-# Usage.
+# Usage
 
-<code>require("fbinstant-deploy").deploy(directory, access_token, app_id)</code>
+<code>require("fbinstant-deploy").deploy(directory, access_token, app_id, comment)</code>
 
-# Example.
+# Example
 
 <pre>
     <code>
     const fbinstantDeploy = require("fbinstant-deploy");
-    fbinstantDeploy.deploy("/some/dir/to/zip/", "access_token", "app_id").then(()=>{
+    fbinstantDeploy.deploy("/some/dir/to/zip/", "access_token", "app_id", "some comment here").then(()=>{
         console.log("Deployment successful!");
     });
     </code>
