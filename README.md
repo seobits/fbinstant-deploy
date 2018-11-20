@@ -17,8 +17,8 @@ require("fbinstant-deploy").deploy(directory, access_token, app_id, comment);
 # Example
 
 ```javascript
-const fbinstantDeploy = require("fbinstant-deploy");
-fbinstantDeploy.deploy("/some/dir/to/zip/", "access_token", "app_id", "some comment here").then(()=>{
+const instantDeployer = require("fbinstant-deploy");
+instantDeployer.deploy("/some/dir/to/zip/", "access_token", "app_id", "some comment here").then(()=>{
     console.log("Deployment successful!");
 });
 ```
