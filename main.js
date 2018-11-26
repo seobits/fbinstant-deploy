@@ -4,13 +4,13 @@ const path = require('path');
 const fs = require('fs');
 
 function zipProject(dir) {
-    const filename = path.posix.basename(dir);
     return new Promise((resolve, reject) => {
-        zipFolder(dir, filename + ".zip", function (e) {
+        zipFolder(dir, dir + ".zip", function (e) {
             if (e) {
                 console.log(e);
                 reject(e);
             } else {
+                console.log(`Project file: ${path.resolve(dir)}.zip`);
                 resolve();
             }
         })
@@ -60,7 +60,6 @@ function deploy(directory, accesstoken, appid, comment = "") {
             directory = path.resolve(directory);
             console.log(`Compressing directory: ${path.relative(__dirname, directory)}`);
             return zipProject(directory).then(() => {
-                console.log(`Project file: ${path.relative(__dirname, directory)}.zip`);
                 console.log(`Deploying to facebook...`);
                 console.log(`\tAccessToken: ${accesstoken.substr(0, 10)}[...]`);
                 console.log(`\tAppId: ${appid}`);
