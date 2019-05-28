@@ -1,19 +1,17 @@
-const zipFolder = require('zip-folder');
+const zip = require('bestzip');
 const request = require('request');
 const path = require('path');
 const fs = require('fs');
 
 function zipProject(dir) {
     return new Promise((resolve, reject) => {
-        zipFolder(dir, dir + ".zip", function (e) {
-            if (e) {
-                console.log(e);
-                reject(e);
-            } else {
-                console.log(`Project file: ${path.resolve(dir)}.zip`);
-                resolve();
-            }
-        })
+        zip({
+            source: dir,
+            destination: "./" + dir + ".zip"
+        }).then(function () {
+            console.log(`Project file: ${path.resolve(dir)}.zip`);
+            resolve();
+        }).catch(reject);
     })
 }
 
@@ -63,9 +61,9 @@ function deploy(directory, accesstoken, appid, comment = "") {
                 console.log(`Deploying to facebook...`);
                 console.log(`\tAccessToken: ${accesstoken.substr(0, 10)}[...]`);
                 console.log(`\tAppId: ${appid}`);
-                deploytoFacebook(accesstoken, appid, `${directory}.zip`, comment).then(()=>{
-                    resolve();
-                });
+                deploytoFacebook(accesstoken, appid, `${directory}.zip`, comment)
+                    .then(resolve)
+                    .catch(reject);
             }).catch((e) => {
                 console.log(e);
                 reject(e);
