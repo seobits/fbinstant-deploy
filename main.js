@@ -61,9 +61,9 @@ function deploy(directory, accesstoken, appid, comment = "") {
                 console.log(`Deploying to facebook...`);
                 console.log(`\tAccessToken: ${accesstoken.substr(0, 10)}[...]`);
                 console.log(`\tAppId: ${appid}`);
-                deploytoFacebook(accesstoken, appid, `${directory}.zip`, comment).then(()=>{
-                    resolve();
-                });
+                deploytoFacebook(accesstoken, appid, `${directory}.zip`, comment)
+                    .then(resolve)
+                    .catch(reject);
             }).catch((e) => {
                 console.log(e);
                 reject(e);
