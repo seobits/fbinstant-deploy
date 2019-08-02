@@ -55,13 +55,13 @@ function deploy(directory, accesstoken, appid, comment = "") {
     comment = typeof comment == "string" ? comment : comment.toString();
     return new Promise((resolve, reject) => {
         if (directory || accesstoken || appid) {
-            directory = path.resolve(directory);
             console.log(`Compressing directory: ${path.relative(__dirname, directory)}`);
             return zipProject(directory).then(() => {
                 console.log(`Deploying to facebook...`);
                 console.log(`\tAccessToken: ${accesstoken.substr(0, 10)}[...]`);
                 console.log(`\tAppId: ${appid}`);
-                deploytoFacebook(accesstoken, appid, `${directory}.zip`, comment)
+                console.log(`\tFile: ${path.resolve(directory)}.zip`);
+                deploytoFacebook(accesstoken, appid, `${path.resolve(directory)}.zip`, comment)
                     .then(resolve)
                     .catch(reject);
             }).catch((e) => {
