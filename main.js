@@ -36,7 +36,13 @@ function deploytoFacebook(accestoken, appid, file, comment = "") {
                 console.log(err);
                 reject(err);
             }
-            const parsedBody = JSON.parse(body);
+            let parsedBody;
+            try {
+                parsedBody = JSON.parse(body);
+            } catch (e) {
+                console.error("Failed to parse Facebook deploy response: response is not valid JSON: ", e +  `: ${body}`);
+                return reject();
+            }
             if (parsedBody.success) {
                 console.log("File deployed to Facebook!");
                 resolve();
